@@ -40,7 +40,10 @@ const addProduct = async (req, res) => {
         const product = new productModel(productData)
         await product.save()
 
-        res.json({success:true, message:"product added"})
+        res.json({ success: true, message: "product added" })
+        console.log("Request received");
+        console.log("Body:", req.body);
+        console.log("Files:", req.files);
     } catch (error) {
         console.log(error)
         res.json({ success: false, message: "false" })
@@ -49,34 +52,34 @@ const addProduct = async (req, res) => {
 
 //function of list product
 const listProduct = async (req, res) => {
-try {
-    const products = await productModel.find({})
-    res.json({success:true, products})
-} catch (error) {
-    console.log(error)
-    res.json({success:false, message:"error"})
-}
+    try {
+        const products = await productModel.find({})
+        res.json({ success: true, products })
+    } catch (error) {
+        console.log(error)
+        res.json({ success: false, message: "error" })
+    }
 }
 //function for removing product
 const removeProduct = async (req, res) => {
-try {
-   await productModel.findByIdAndDelete(req.body.id)
-    res.json({success:true, message:"product removed"})
-} catch (error) {
-    console.log(error)
-    res.json({success:false, message:"error"})
-}
+    try {
+        await productModel.findByIdAndDelete(req.body.id)
+        res.json({ success: true, message: "product removed" })
+    } catch (error) {
+        console.log(error)
+        res.json({ success: false, message: "error" })
+    }
 }
 //function for single product info
 const singleProduct = async (req, res) => {
-try {
-    const {productId} = req.body
-    const product = await productModel.findById(productId)
-    res.json({success:true, product})
-} catch (error) {
-    console.log(error)
-    res.json({success:false, message:"error"})
-}
+    try {
+        const { productId } = req.body
+        const product = await productModel.findById(productId)
+        res.json({ success: true, product })
+    } catch (error) {
+        console.log(error)
+        res.json({ success: false, message: "error" })
+    }
 }
 
 export { listProduct, addProduct, removeProduct, singleProduct }

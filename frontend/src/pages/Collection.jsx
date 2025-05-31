@@ -91,7 +91,7 @@ const Collection = () => {
 
   useEffect(()=>{
     applyFilter()
-  },[category, subcategory])
+  },[category, subcategory, products])
 
 
 

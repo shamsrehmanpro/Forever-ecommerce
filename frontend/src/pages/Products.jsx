@@ -13,8 +13,6 @@ const Products = () => {
   const [image, setImage] = useState('')
   const [size, setSize] = useState('')
 
-
-
  const fetchProductData = ()=>{
   const product = products.find((p)=> p._id === productId)
   setProductData(product)
@@ -22,10 +20,11 @@ const Products = () => {
  }
 
   useEffect(()=>{
-    fetchProductData();
-  },[products, productId])
-
-  {console.log(image)}
+    if (products.length > 0) {
+       fetchProductData();
+    }
+   
+  },[products, productId, productData])
 
   return productData ? (
     <div className='border-t-2 pt-10 transition-opacity ease-in duration-500 opacity-100'>
