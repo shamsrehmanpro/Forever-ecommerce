@@ -3,7 +3,6 @@ import userModel from "../models/userModel.js";
 import Stripe from 'stripe'
 
 //gateway initialization
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
 
 
 
